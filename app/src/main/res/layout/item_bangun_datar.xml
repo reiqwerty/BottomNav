@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="9dp"
             android:layout_marginLeft="20dp"
-            android:text="bangundatar"
+            android:text="BangunDatar"
             android:textColor="@color/white"
             android:textSize="25dp"
             android:textStyle="bold"
