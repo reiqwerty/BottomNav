@@ -10,14 +10,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.example.bottomnav.BangunDatar.BangunDatarAdapter;
+import com.example.bottomnav.BangunDatar.Lingkaran;
+import com.example.bottomnav.BangunDatar.Persegi;
+import com.example.bottomnav.BangunDatar.PersegiPanjang;
+import com.example.bottomnav.BangunDatar.Segitiga;
 import com.example.bottomnav.BangunModel;
 import com.example.bottomnav.MainActivity;
 import com.example.bottomnav.R;
 
 import java.util.ArrayList;
 
-public class BangunRuangFragment extends Fragment implements BangunRuangAdapter.RecyclerViewClickListener {
+public class BangunRuangFragment extends Fragment implements BangunRuangAdapter.ItemClickListener, BangunDatarAdapter.ItemClickListener {
     ArrayList<BangunModel> modelBangunRuang = new ArrayList<>();
 
     @Override
@@ -31,32 +37,29 @@ public class BangunRuangFragment extends Fragment implements BangunRuangAdapter.
         modelBangunRuang.add(new BangunModel("Tabung","https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.kompas.com%2Fskola%2Fread%2F2022%2F01%2F12%2F144952269%2Funsur-unsur-bangun-ruang-kerucut%3Fpage%3Dall&psig=AOvVaw1jrqMNI-I0Rfu4KZn2QJLQ&ust=1711519347729000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCNCswsagkYUDFQAAAAAdAAAAABAE"));
 
         rvBangunRuang.setLayoutManager(new LinearLayoutManager(getActivity()));
-        BangunRuangAdapter adapter = new BangunRuangAdapter(getContext(), modelBangunRuang, this);
+        BangunRuangAdapter adapter = new BangunRuangAdapter(getContext(),modelBangunRuang);
+        adapter.setClickListener(this);
         rvBangunRuang.setAdapter(adapter);
 
         return rootview;
     }
-    public void onClick(View view, int position) {
-        String selectedBangunRuang = modelBangunRuang.get(position).getName();
-
-        Intent intent;
-        switch (selectedBangunRuang) {
-            case "Kubus":
-                intent = new Intent(getActivity(), Kubus.class);
-                break;
-            case "Balok":
-                intent = new Intent(getActivity(), Balok.class);
-                break;
-            case "Bola":
-                intent = new Intent(getActivity(), Bola.class);
-                break;
-            case "Tabung":
-                intent = new Intent(getActivity(), Tabung.class);
-                break;
-            default:
-                intent = new Intent(getActivity(), MainActivity.class);
-                break;
+    @Override
+    public void onItemClick(View view, int position) {
+        BangunModel clickedItem = modelBangunRuang.get(position);
+        if (clickedItem.getName().equals("Kubus")) {
+            Intent intent = new Intent(getActivity(), Kubus.class);
+            startActivity(intent);
+        } else if (clickedItem.getName().equals("Bola")) {
+            Intent intent = new Intent(getActivity(), Bola.class);
+            startActivity(intent);
+        } else if (clickedItem.getName().equals("Balok")) {
+            Intent intent = new Intent(getActivity(), Balok.class);
+            startActivity(intent);
+        } else if (clickedItem.getName().equals("Tabung")) {
+            Intent intent = new Intent(getActivity(), Tabung.class);
+            startActivity(intent);
+        } else {
+            Toast.makeText(getActivity(), "Item tidak ditemukan", Toast.LENGTH_SHORT).show();
         }
-        startActivity(intent);
     }
 }
