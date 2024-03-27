@@ -1,12 +1,15 @@
-package com.example.bottomnav;
+package com.example.bottomnav.BangunDatar;
 
 import android.content.Context;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
+import com.example.bottomnav.BangunModel;
+import com.example.bottomnav.R;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,12 +19,12 @@ import java.util.ArrayList;
 public class BangunDatarAdapter extends RecyclerView.Adapter<BangunDatarAdapter.MyViewHolder> {
     Context context;
     ArrayList<BangunModel> modelbangundatar = new ArrayList<>();
+    private RecyclerViewClickListener mListener;
 
-    ItemClickListener mClickListener;
-
-    public BangunDatarAdapter(Context context, ArrayList<BangunModel> modelbangundatar) {
+    public BangunDatarAdapter(Context context, ArrayList<BangunModel> modelbangundatar, RecyclerViewClickListener listener) {
         this.context = context;
         this.modelbangundatar = modelbangundatar;
+        this.mListener = listener;
     }
 
     @NonNull
@@ -33,9 +36,18 @@ public class BangunDatarAdapter extends RecyclerView.Adapter<BangunDatarAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BangunDatarAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull BangunDatarAdapter.MyViewHolder holder, final int position) {
+
         holder.tvnamebangdatar.setText(modelbangundatar.get(position).getName());
         Glide.with(context).load(modelbangundatar.get(position).getImg()).into(holder.imagesbangundatar);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mListener.onClick(view, position);
+            }
+        });
+
     }
 
     @Override
@@ -43,33 +55,18 @@ public class BangunDatarAdapter extends RecyclerView.Adapter<BangunDatarAdapter.
         return modelbangundatar.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class MyViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imagesbangundatar;
-
         TextView tvnamebangdatar;
 
         public MyViewHolder(View ItemView) {
             super(ItemView);
             imagesbangundatar = itemView.findViewById(R.id.imagesbangundatar);
             tvnamebangdatar = itemView.findViewById(R.id.tvnamebangdatar);
-
-            itemView.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View v) {
-            if (mClickListener != null) mClickListener.onItemClick(v, getAdapterPosition());
         }
     }
-    BangunModel getItem(int id) {return modelbangundatar.get(id);
-    }
-
-    void setClickListener(ItemClickListener itemClickListener){
-        this.mClickListener = itemClickListener;
-    }
-
-    public interface ItemClickListener{
-        void onItemClick(View view,int position);
+    public interface RecyclerViewClickListener {
+        void onClick(View view, int position);
     }
 }

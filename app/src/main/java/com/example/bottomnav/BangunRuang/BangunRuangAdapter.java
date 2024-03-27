@@ -1,4 +1,4 @@
-package com.example.bottomnav;
+package com.example.bottomnav.BangunRuang;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
+import com.example.bottomnav.BangunDatar.BangunDatarAdapter;
+import com.example.bottomnav.BangunModel;
+import com.example.bottomnav.R;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,11 +19,12 @@ import java.util.ArrayList;
 public class BangunRuangAdapter extends RecyclerView.Adapter<BangunRuangAdapter.MyViewHolder> {
     Context context;
     ArrayList<BangunModel> modelBangunRuang = new ArrayList<>();
-    ItemClickListener mClickListener;
+    private RecyclerViewClickListener mListenerBangunRuang;
 
-    public BangunRuangAdapter(Context context, ArrayList<BangunModel> modelBangunRuang) {
+    public BangunRuangAdapter(Context context, ArrayList<BangunModel> modelBangunRuang, RecyclerViewClickListener listener) {
         this.context = context;
         this.modelBangunRuang = modelBangunRuang;
+        this.mListenerBangunRuang = listener;
     }
 
     @NonNull
@@ -32,9 +36,16 @@ public class BangunRuangAdapter extends RecyclerView.Adapter<BangunRuangAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BangunRuangAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull BangunRuangAdapter.MyViewHolder holder, final int position) {
         holder.tvBangunRuang.setText(modelBangunRuang.get(position).getName());
         Glide.with(context).load(modelBangunRuang.get(position).getImg()).into(holder.imgBangunRuang);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mListenerBangunRuang.onClick(view, position);
+            }
+        });
     }
 
     @Override
@@ -42,8 +53,7 @@ public class BangunRuangAdapter extends RecyclerView.Adapter<BangunRuangAdapter.
         return modelBangunRuang.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-
+    public class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView imgBangunRuang;
 
         TextView tvBangunRuang;
@@ -52,23 +62,9 @@ public class BangunRuangAdapter extends RecyclerView.Adapter<BangunRuangAdapter.
             super(ItemView);
             imgBangunRuang = itemView.findViewById(R.id.imgBangunRuang);
             tvBangunRuang= itemView.findViewById(R.id.tvBangunRuang);
-
-            itemView.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View v) {
-            if (mClickListener != null) mClickListener.onItemClick(v, getAdapterPosition());
         }
     }
-    BangunModel getItem(int id) {return modelBangunRuang.get(id);
-    }
-
-    void setClickListener(ItemClickListener itemClickListener){
-        this.mClickListener = itemClickListener;
-    }
-
-    public interface ItemClickListener{
-        void onItemClick(View view,int position);
+    public interface RecyclerViewClickListener {
+        void onClick(View view, int position);
     }
 }
