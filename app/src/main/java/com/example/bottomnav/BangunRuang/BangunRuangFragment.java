@@ -31,10 +31,10 @@ public class BangunRuangFragment extends Fragment implements BangunRuangAdapter.
         View rootview = inflater.inflate(R.layout.fragment_bangun_ruang,container,false);
         RecyclerView rvBangunRuang = rootview.findViewById(R.id.rvBangunRuang);
 
-        modelBangunRuang.add(new BangunModel("Kubus","https://www.google.com/url?sa=i&url=http%3A%2F%2Fpersadapendidikan.blogspot.com%2F2010%2F11%2Fvolume-bangun-ruang-kubus.html&psig=AOvVaw1Lek1epVpGqJu54bw8HJ-D&ust=1711427149082000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCODE4ovJjoUDFQAAAAAdAAAAABAE"));
-        modelBangunRuang.add(new BangunModel("Bola","https://www.google.com/url?sa=i&url=https%3A%2F%2Froboguru.ruangguru.com%2Fquestion%2Fbangun-ruang-di-atas-disebut-_QU-FHWS0P3Y&psig=AOvVaw1HokreHCrc3VpcLRScdD_G&ust=1711427711072000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCPDe1Z3LjoUDFQAAAAAdAAAAABAE"));
-        modelBangunRuang.add(new BangunModel("Balok","https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.cnnindonesia.com%2Fedukasi%2F20230224175548-569-917575%2Fpengertian-sifat-dan-rumus-rumus-balok-lengkap-dengan-penjelasan&psig=AOvVaw1X1bb4m5pXebdyHKjottZu&ust=1711427779408000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCNDcpLjLjoUDFQAAAAAdAAAAABAE"));
-        modelBangunRuang.add(new BangunModel("Tabung","https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.kompas.com%2Fskola%2Fread%2F2022%2F01%2F12%2F144952269%2Funsur-unsur-bangun-ruang-kerucut%3Fpage%3Dall&psig=AOvVaw1jrqMNI-I0Rfu4KZn2QJLQ&ust=1711519347729000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCNCswsagkYUDFQAAAAAdAAAAABAE"));
+        modelBangunRuang.add(new BangunModel("Kubus","https://try24.files.wordpress.com/2012/01/kubus.png"));
+        modelBangunRuang.add(new BangunModel("Bola","https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQNSH7aGy0ifHaHJ9WNG7gW77EVipUfR68jb40o-3lT3YfqRq5CIikkrEzRJp9bc12h8sxFU_TXTNQajt28PMi7I6pkmok82PEX3KGSZN3BYEgZ-5KRR0-qkroe5CPH2PP5i_Wr42VymA/s1600/bola.png"));
+        modelBangunRuang.add(new BangunModel("Balok","https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Cuboid_simple.svg/240px-Cuboid_simple.svg.png"));
+        modelBangunRuang.add(new BangunModel("Tabung","https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Cylinder_geometry.svg/1200px-Cylinder_geometry.svg.png"));
 
         rvBangunRuang.setLayoutManager(new LinearLayoutManager(getActivity()));
         BangunRuangAdapter adapter = new BangunRuangAdapter(getContext(),modelBangunRuang);

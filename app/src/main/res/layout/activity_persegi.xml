@@ -4,65 +4,87 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="10dp"
     tools:context=".BangunDatar.Persegi">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvPersegi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Persegi"
         android:fontFamily="@font/rubikmedium"
+        android:textColor="@color/Black"
+        android:text="Persegi"
         android:textAlignment="center"
-        android:textSize="50dp" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_launcher_background"
+        android:textSize="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imagesbangundatar"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/persegi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPersegi" />
 
     <EditText
-        android:id="@+id/editText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:height="55dp"
+        android:id="@+id/etSisi"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+
         android:background="@drawable/custom_input"
-        android:hint="Masukkan sisi"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginStart="40dp"
+        android:hint="Masukkan Sisi"
+        android:inputType="number"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        tools:layout_editor_absoluteX="50dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imagesbangundatar" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tvHasil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="40dp"
-        android:fontFamily="@font/rubikmedium"
-        android:text="HASIL"
-        android:textStyle="bold"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="15dp"
+        android:fontFamily="@font/latoregular"
+        android:textColor="@color/Black"
+        android:text="Hasil"
         android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/etHasil"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/etSisi" />
+
+    <EditText
+        android:id="@+id/etHasil"
+        android:layout_width="215dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/custom_input"
+        android:inputType="number"
+        android:focusable="false"
+        android:layout_marginRight="16dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvHasil"
+        app:layout_constraintTop_toBottomOf="@+id/etSisi" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button"
-        android:text="Hitung"
-        android:textSize="20dp"
-        android:textColor="@color/White"
-        android:background="@drawable/custom_button"
+        android:id="@+id/btnHitung"
         android:layout_width="130dp"
         android:layout_height="50dp"
         android:layout_marginTop="35dp"
-        android:layout_marginRight="42dp"
+        android:layout_marginRight="171dp"
+        android:background="@drawable/custom_button"
+        android:text="Hitung"
+        android:textColor="@color/White"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvHasil" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

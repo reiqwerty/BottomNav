@@ -19,7 +19,7 @@
             android:id="@+id/tvnamebangdatar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="9dp"
+            android:layout_marginTop="16dp"
             android:layout_marginLeft="20dp"
             android:text="BangunDatar"
             android:textColor="@color/Black"
